@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>casadocodigo</groupId>
+  <artifactId>casadocodigo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>lojaonline</name>
+
+<dependencies>
+<dependency>
+    <groupId>javax.enterprise</groupId>
+    <artifactId>cdi-api</artifactId>
+    <version>1.1</version>
+    <scope>provided</scope>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.jboss.spec.javax.faces/jboss-jsf-api_2.2_spec -->
+<dependency>
+    <groupId>org.jboss.spec.javax.faces</groupId>
+    <artifactId>jboss-jsf-api_2.1_spec</artifactId>
+    <scope>provided</scope>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
+<dependency>
+    <groupId>javax.enterprise</groupId>
+    <artifactId>cdi-api</artifactId>
+    <version>1.0</version>
+    <scope>provided</scope>
+</dependency>
+
+
+
+</dependencies>
+</project>
+
+
