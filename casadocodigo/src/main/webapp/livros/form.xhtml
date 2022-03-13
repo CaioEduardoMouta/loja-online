@@ -7,22 +7,33 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:form>
+	<h:message />
 	<div>
 		<h:outputLabel value="Titulo"/>
-		<h:inputText value="#{adminLivrosBean.livro.titulo}" />
+		<h:inputText value="#{adminLivrosBean.livro.titulo}" 
+		required="true" requiredMessage="O titulo é um campo obrigatorio">
+		 </h:inputText>
 	</div>
 	<div>
 		<h:outputLabel value="Descrição"/>
 		<h:inputText rows="4" cols="20" 
-		value="#{adminLivrosBean.livro.descricao}"/>
+		value="#{adminLivrosBean.livro.descricao}"
+		required="true" requiredMessage="A Descrição é um campo obrigatorio">
+		 <f:validateDoubleRange minimum="20" maximum="150"/>
+		 </h:inputText>
 	</div>
 	<div>
 		<h:outputLabel value="Numero de Páginas"/>
-		<h:inputText value="#{adminLivrosBean.livro.numerosDePaginas}" />
+		<h:inputText value="#{adminLivrosBean.livro.numerosDePaginas}" 
+		required="true" requiredMessage="O numero de páginas é um campo obrigatorio">
+	   <f:validateLongRange minimum="80" />
+	   </h:inputText>
 	</div>
 	<div>
 		<h:outputLabel value="Preço"/>
-		<h:inputText value="#{adminLivrosBean.livro.preco}" />
+		<h:inputText value="#{adminLivrosBean.livro.preco}" 
+		required="true" requiredMessage="O preço é um campo obrigatorio">
+		 </h:inputText>
 	</div>
 	<div>
 		<h:outputLabel value="Autores" />

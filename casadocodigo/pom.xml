@@ -66,20 +66,20 @@
   
 
 <!-- https://mvnrepository.com/artifact/org.jboss.spec.javax.faces/jboss-jsf-api_2.1_spec -->
- <dependency>
+<!--  <dependency>
     <groupId>org.jboss.spec.javax.faces</groupId>
     <artifactId>jboss-jsf-api_2.1_spec</artifactId>
     <version>2.1.29.1.Final</version>
-</dependency>
+</dependency> -->
 
 
-<dependency>
+<!-- <dependency>
 	<groupId>org.jboss.spec</groupId>
 	<artifactId>jboss-javaee-6.0</artifactId>
 	<version>3.0.3.Final</version>
 	<type>pom</type>
 	<scope>import</scope>
-</dependency> 
+</dependency>  -->
 
 <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
 <!-- https://mvnrepository.com/artifact/javax.annotation/jsr250-api -->
@@ -97,6 +97,19 @@
     <scope>provided</scope>
 </dependency>
 
+<dependency>
+		<groupId>com.sun.faces</groupId>
+		<artifactId>jsf-api</artifactId>
+	   <version>2.2.12</version>
+</dependency>
+
+
+
+<dependency>
+	   <groupId>com.sun.faces</groupId>
+	   <artifactId>jsf-impl</artifactId>
+	   <version>2.2.12</version>
+</dependency>
 
 
 
