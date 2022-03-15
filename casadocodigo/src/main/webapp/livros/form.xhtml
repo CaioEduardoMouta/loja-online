@@ -11,38 +11,42 @@
 	<div>
 		<h:outputLabel value="Titulo"/>
 		<h:inputText value="#{adminLivrosBean.livro.titulo}" 
-		required="true" requiredMessage="O titulo é um campo obrigatorio">
-		 </h:inputText>
+		required="true" id="titulo" requiredMessage="O titulo é um campo obrigatorio" />
+		<h:message for="titulo" />
 	</div>
 	<div>
 		<h:outputLabel value="Descrição"/>
 		<h:inputText rows="4" cols="20" 
 		value="#{adminLivrosBean.livro.descricao}"
-		required="true" requiredMessage="A Descrição é um campo obrigatorio">
-		 <f:validateDoubleRange minimum="20" maximum="150"/>
-		 </h:inputText>
+		required="true" requiredMessage="A Descrição é um campo obrigatorio"
+		id="descricao"/>
+		<!--  <f:validateDoubleRange minimum="20" maximum="150"/>  -->
+		 </h:message for="descricao"/>
 	</div>
 	<div>
 		<h:outputLabel value="Numero de Páginas"/>
 		<h:inputText value="#{adminLivrosBean.livro.numerosDePaginas}" 
-		required="true" requiredMessage="O numero de páginas é um campo obrigatorio">
+		required="true"  id="numeroPaginas" requiredMessage="O numero de páginas é um campo obrigatorio">
 	   <f:validateLongRange minimum="80" />
 	   </h:inputText>
+	   <h:message for="numeroPaginas" />
 	</div>
 	<div>
 		<h:outputLabel value="Preço"/>
 		<h:inputText value="#{adminLivrosBean.livro.preco}" 
-		required="true" requiredMessage="O preço é um campo obrigatorio">
+		required="true" id="preco" requiredMessage="O preço é um campo obrigatorio">
 		 </h:inputText>
+		 <h:message for="preco"/>
 	</div>
 	<div>
 		<h:outputLabel value="Autores" />
 		<h:selectManyListbox value="#{adminLivrosBean.autoresId}"
-							 converter="javax.faces.Integer">
+							 converter="javax.faces.Integer" id="autores">
 			<f:selectItems value="#{adminLivrosBean.autores}"
 			 var="autor"
 			 itemValue="#{autor.id}" itemLabel="#{autor.nome}"/>
 		</h:selectManyListbox>
+		<h:message for="autores" />
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 </h:form>
