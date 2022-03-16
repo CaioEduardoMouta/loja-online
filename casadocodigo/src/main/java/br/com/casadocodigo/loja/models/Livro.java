@@ -1,6 +1,8 @@
 package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,7 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.Max;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -17,6 +21,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Livro {
@@ -36,9 +41,13 @@ public class Livro {
 	@Min(50)
 	private Integer numerosDePaginas;
 	
+	@Temporal(TemporalType.DATE)
+	private Calendar dataPublicacao;
+	
 	@ManyToMany
 	@Size(min=1)
-	private List<Autor> autores;
+	@NotNull
+	private List<Autor> autores = new ArrayList<>();
 	
 	
 	
