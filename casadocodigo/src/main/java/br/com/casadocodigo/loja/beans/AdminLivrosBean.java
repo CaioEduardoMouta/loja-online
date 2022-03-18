@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 
 import br.com.casadocodigo.loja.daos.AutorDao;
 import br.com.casadocodigo.loja.daos.LivroDao;
+import br.com.casadocodigo.loja.infra.FileSaver;
 import br.com.casadocodigo.loja.models.Autor;
 import br.com.casadocodigo.loja.models.Livro;
 
@@ -42,8 +43,11 @@ public class AdminLivrosBean {
 	public String salvar() throws IOException {
 
 		dao.salvar(livro);
+		FileSaver fileSaver = new FileSaver();
+		livro.setCapaPath(fileSaver.write(capaLivro,"livros"));
 		
-		capaLivro.write("/casadocodigo/livros/"+ capaLivro.getSubmittedFileName());
+		String relativePath = write();
+		livro.setCapaPath(relativePath);
 		
 		context.getExternalContext()
 		.getFlash().setKeepMessages(true);
@@ -52,6 +56,13 @@ public class AdminLivrosBean {
 		.addMessage(null, new FacesMessage("Livro cadastrado com sucesso"));
 		
 		return "/livros/lista?faces-redirect=true";
+	}
+
+	private String write() throws IOException {
+		String ServerPath = "/casadocodigo";
+		String relativePath = "/livros/" + capaLivro.getSubmittedFileName();
+		capaLivro.write(ServerPath + relativePath);
+		return relativePath;
 	}
 	
 	public List<Autor> getAutores(){
