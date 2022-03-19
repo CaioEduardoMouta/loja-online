@@ -3,16 +3,15 @@ package br.com.casadocodigo.loja.infra;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+import java.nio.file.Path;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Part;
-import javax.validation.Path;
-import java.io.File;
+
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
-import java.nio.file.Paths;
+
 
 public class FileSaver {
 	

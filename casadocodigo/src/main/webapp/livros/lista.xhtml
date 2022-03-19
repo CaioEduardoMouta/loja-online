@@ -34,7 +34,10 @@
 			</ui:repeat>
 		</h:column>
 		<h:column>
-		<f:facet></f:facet>
+		<f:facet name="header">Capa Path</f:facet>
+		<img src="#{request.contextParh}/file/#{livro.capaPath}"
+		alt="#{livro.titulo}"/>
+		
 		</h:column>
 		
 	</h:dataTable>
