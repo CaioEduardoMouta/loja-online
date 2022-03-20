@@ -95,6 +95,14 @@ public class Livro {
 		this.capaPath = capaPath;
 	}
 	
+	public Calendar getDataPublicacao() {
+		return dataPublicacao;
+	}
+	
+	public void setDataPublicacao(Calendar dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+	
 	
 	
 }

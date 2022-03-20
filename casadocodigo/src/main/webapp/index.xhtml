@@ -213,62 +213,19 @@
 <section class="vitrineDestaquinho container">
 	<h2 class="vitrineDestaquinho-titulo">Últimos lançamentos</h2>
 	<ul class="vitrineDestaquinho-lista">
-		
-		<li class="livroNaVitrine vitrineDestaquinho-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link"
-					title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" 
-						src="resources/imagens/certificacao-java-featured_large.png" 
-							alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDestaquinho-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link"
-					title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" 
-						src="resources/imagens/certificacao-java-featured_large.png" 
-							alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDestaquinho-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link"
-					title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" 
-						src="resources/imagens/certificacao-java-featured_large.png" 
-							alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDestaquinho-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link"
-					title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" 
-						src="resources/imagens/certificacao-java-featured_large.png" 
-							alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDestaquinho-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link"
-					title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" 
-						src="resources/imagens/certificacao-java-featured_large.png" 
-							alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
+		<ui:repeat var="livro" value="{homeBean.ultimosLancamentos()}">
+			<li class="livroNaVitrine vitrineDestaquinho-produto">
+				<a href="#{request.contextPath}/livro-detalhe.xhtml?id=#{livro.id}" class="livroNaVitrine-link"
+						title="#{livro.titulo}">
+					<div class="livroNaVitrine-imagemContainer" role="presentation">
+						<img class="livroNaVitrine-imagem" 
+							src="resources/imagens/certificacao-java-featured_large.png" 
+								alt="#{livro.titulo}" title="#{livro.titulo}" />
+					</div>
+					<span class="livroNaVitrine-nome">#{livro.titulo}</span>
+				</a>
+			</li>
+		</ui:repeat>
 	</ul>
 </section>
 
@@ -277,116 +234,19 @@
 
 <section class="vitrineDaColecao container">
 	<ul class="vitrineDaColecao-lista">
+		<ui:repeat value="#{homeBean.demaisLivros()}" var="livro">
 		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
+			<a href="{request.contextpath}/livro-detalhe.xhtml?id={livro.id}" class="livroNaVitrine-link" 
+				title="#{livro.titutlo}">
 				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
+					<img class="livroNaVitrine-imagem" src="#{request.contextPath}/file"
+						src="#{request.contextPath}/file/#{livro.capaPath}" 
+						alt="#{livro.titutlo}" title="#{livro.titulo}" />
 				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
+				<span class="livroNaVitrine-nome">#{livro.titutlo}</span>
 			</a>
 		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-certificacao-java-associate" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-javascript-assertivo" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-javascript-assertivo" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="https://www.casadocodigo.com.br/products/livro-javascript-assertivo" class="livroNaVitrine-link" 
-				title="Java SE 8 Programmer I">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="resources/imagens/certificacao-java-featured_large.png" 
-						alt="Java SE 8 Programmer I" title="Java SE 8 Programmer I" />
-				</div>
-				<span class="livroNaVitrine-nome">Java SE 8 Programmer I</span>
-			</a>
-		</li>
+		
 	</ul>
 </section>
 

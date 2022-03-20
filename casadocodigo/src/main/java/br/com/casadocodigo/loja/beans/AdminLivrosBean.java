@@ -30,8 +30,13 @@ public class AdminLivrosBean {
 	
 	@Inject
 	private AutorDao autorDao;
+	
+	private Autor autor;
+	
 	@Inject
 	private FacesContext context;
+	
+	
 	
 	private Part capaLivro;
 	
@@ -65,16 +70,31 @@ public class AdminLivrosBean {
 		return relativePath;
 	}
 	
-	public List<Autor> getAutores(){
-			return autorDao.listar();
-	}
-	
+public AutorDao getAutorDao() {
+	return autorDao;
+}
 	public Livro getLivro() {
 		return livro;
 	}
 	
 	public void setLivro(Livro livro) {
 		this.livro = livro;
+	}
+	
+	public Part getCapaLivro() {
+		return capaLivro;
+	}
+	
+	public void setCapaLivro(Part capaLivro) {
+		this.capaLivro = capaLivro;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 
 
