@@ -21,6 +21,7 @@ public class LivroDetalheBean {
 		this.setLivro(dao.buscarPorId(id));
 	}
 	
+	
 	public Integer getId() {
 		return id;
 	}

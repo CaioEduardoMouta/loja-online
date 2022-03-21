@@ -147,11 +147,13 @@
     <scope>provided</scope>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
 <dependency>
-		<groupId>com.sun.faces</groupId>
-		<artifactId>jsf-api</artifactId>
-	   <version>2.2.12</version>
+    <groupId>com.sun.faces</groupId>
+    <artifactId>jsf-api</artifactId>
+    <version>2.2.20</version>
 </dependency>
+
 
 <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
 <dependency>
