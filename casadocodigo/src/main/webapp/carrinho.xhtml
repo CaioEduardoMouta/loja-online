@@ -273,7 +273,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<ui:repeat value="#{carrinhoCompras.itens}" var="carrinhoItem">
+			<ui:repeat value="#{carrinhoCompras.itens}" var="carrinhoItem" varStatus="loop">
 			<tr>
 				<td class="formularioDoCarrinho-item">
 					<a href="#{request.contextPath}/livro-detalhe.xhtml?id=#{carrinhoItem.livro.id}">
@@ -284,16 +284,16 @@
 				<td class="formularioDoCarrinho-item">
 					<h2 class="formularioDoCarrinho-item-titulo">#{carrinhoItem.livro.titulo}</h2>
 				</td>
-				<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">#{carrinhoItem.livro.preco * carrinhoItem.quantidade}</td>
+				<td class="formularioDoCarrinho-item formularioDoCarrinho-item-preco">#{carrinhoCompras.getTotal(carrinhoItem)}</td>
 				<td class="formularioDoCarrinho-item">
 					<input class="formularioDoCarrinho-item-quantidade"
 						   type="number"
 						   min="0"
-						   value="#{carrinhoItem.livro.quantidade}" />
+						   jsf:value="#{carrinhoCompras.itens[loop.index].quantidade}" />
 				</td>
 				<td class="formularioDoCarrinho-item formularioDoCarrinho-item-precoTotal" title="Preço unitário: R$ #{carrinhoItem.livro.preco}">#{carrinhoItem.livro.preco}</td>
 				<td class="formularioDoCarrinho-item">
-					<a href="https://www.casadocodigo.com.br/cart/change?id=18404155847&amp;quantity=0">
+					<a jsf:action="#{carrinhoComprasBeam.remover(carrinhoItem)}">
 						<img class="formularioDoCarrinho-item-remover-imagem"  src="resources/imagens/trash.png" alt="X" title="Remover" />
 					</a>
 				</td>
@@ -302,15 +302,14 @@
 		</tbody>
 		<tfoot class="formularioDoCarrinho-rodape">
 			<tr>
-				<td class="formularioDoCarrinho-rodape-item formularioDoCarrinho-finalizar" colspan="3">
-					<button class="formularioDoCarrinho-finalizar-botao" type="submit" name="checkout">Finalizar<span class="formularioDoCarrinho-finalizar-botao-texto" role="presentation"> compra</span></button>
+				<td class="formularioDoCarrinho-rodape-item"> 
+					<button class="formularioDoCarrinho-atualizar"
+					 type="submit" jsf:id="btnAtualizar">Atualizar</button>
 				</td>
 				<td class="formularioDoCarrinho-rodape-item">
-					R$ #{carrinhoCompras.getTotal()}
+					R$ #{carrinhoDao.getTotal()}
 				</td>
-				<td class="formularioDoCarrinho-rodape-item">
-					R$29,90
-				</td>
+				
 				<td></td>
 			</tr>
 		</tfoot>
