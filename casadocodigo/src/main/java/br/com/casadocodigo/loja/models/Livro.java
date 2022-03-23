@@ -31,6 +31,7 @@ public class Livro {
 	
 	@NotBlank
 	private String titulo;
+	
 	@Lob
 	@Length
 	private String descricao;
@@ -101,6 +102,14 @@ public class Livro {
 	
 	public void setDataPublicacao(Calendar dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	@Override
 	public int hashCode() {
