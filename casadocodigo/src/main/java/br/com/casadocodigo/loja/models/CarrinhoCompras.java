@@ -15,8 +15,10 @@ import javax.inject.Named;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 
+
 import br.com.casadocodigo.loja.daos.CompraDao;
-import br.com.casadocodigo.loja.daos.UsuarioDao;
+import br.com.casadocodigo.loja.service.PagamentGateway;
+
 
 @Named
 @SessionScoped
@@ -33,6 +35,8 @@ public class CarrinhoCompras implements Serializable{
 		
 		@Inject
 		private CompraDao compraDao;
+		
+		private PagamentGateway pagamentGateway;
 		
 		public void add(CarrinhoItem item) {
 			itens.add(item);
@@ -71,11 +75,16 @@ public class CarrinhoCompras implements Serializable{
 		public void finalizar(Usuario usuario) {
 			Compra compra = new Compra();
 			compra.setUsuario(usuario);
-			
+			compra.setItens(this.toJson());
 			compraDao.salvar(compra);
 			
+			
+			String response = pagamentGateway.pagar(getTotal());
+			
+			System.out.println(response);
 		}
-		
+
+
 		public String toJson() {
 			JsonArrayBuilder builder = Json.createArrayBuilder();
 			for (CarrinhoItem item  : itens) {
