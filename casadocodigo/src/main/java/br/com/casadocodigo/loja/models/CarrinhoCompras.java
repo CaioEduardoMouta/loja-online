@@ -36,7 +36,7 @@ public class CarrinhoCompras implements Serializable{
 		@Inject
 		private CompraDao compraDao;
 		
-		private PagamentGateway pagamentGateway;
+	
 		
 		public void add(CarrinhoItem item) {
 			itens.add(item);
@@ -72,16 +72,12 @@ public class CarrinhoCompras implements Serializable{
 			
 		}
 
-		public void finalizar(Usuario usuario) {
-			Compra compra = new Compra();
-			compra.setUsuario(usuario);
+		public void finalizar(Compra compra) {
+
 			compra.setItens(this.toJson());
 			compraDao.salvar(compra);
 			
-			
-			String response = pagamentGateway.pagar(getTotal());
-			
-			System.out.println(response);
+	
 		}
 
 

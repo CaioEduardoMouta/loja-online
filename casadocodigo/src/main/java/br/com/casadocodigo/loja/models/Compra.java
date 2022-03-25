@@ -1,15 +1,19 @@
 package br.com.casadocodigo.loja.models;
 
 import java.util.List;
-
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.PostPersist;
+import javax.persistence.PostUpdate;
+import javax.persistence.PrePersist;
 
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.mapping.Set;
 
 @Entity
 public class Compra {
@@ -22,6 +26,22 @@ public class Compra {
 	private Usuario usuario;
 	
 	private String itens;
+	
+	private String uuid;
+	
+	
+	@PrePersist
+	public void createUUID() {
+		this.uuid = UUID.randomUUID().toString();
+	}
+	
+	public String getUuid() {
+		return uuid;
+	}
+	
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 
 	public Integer getId() {
 		return id;
