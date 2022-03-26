@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +29,9 @@ public class Compra {
 	private String itens;
 	
 	private String uuid;
+	
+	private BigDecimal total;
+	
 	
 	
 	@PrePersist
@@ -66,6 +70,12 @@ public class Compra {
 	public void setItens(String itens) {
 		this.itens = itens;
 	}
+	public BigDecimal getTotal() {
+		return total;
+	}
 	
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
 	
 }

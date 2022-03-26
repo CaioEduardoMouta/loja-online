@@ -17,7 +17,7 @@ import javax.json.JsonArrayBuilder;
 
 
 import br.com.casadocodigo.loja.daos.CompraDao;
-import br.com.casadocodigo.loja.service.PagamentGateway;
+
 
 
 @Named
@@ -75,6 +75,7 @@ public class CarrinhoCompras implements Serializable{
 		public void finalizar(Compra compra) {
 
 			compra.setItens(this.toJson());
+			compra.setTotal(getTotal());
 			compraDao.salvar(compra);
 			
 	

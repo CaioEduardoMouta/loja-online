@@ -8,7 +8,7 @@ import javax.ws.rs.client.Entity;
 
 import br.com.casadocodigo.loja.models.Pagamento;
 
-public class PagamentGateway {
+public class PagamentoGateway {
 	
 	public String pagar(BigDecimal total) {
 		Pagamento pagamento = new Pagamento(total);
