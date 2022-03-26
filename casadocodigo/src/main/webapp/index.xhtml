@@ -239,14 +239,14 @@
 			<a href="{request.contextpath}/livro-detalhe.xhtml?id={livro.id}" class="livroNaVitrine-link" 
 				title="#{livro.titutlo}">
 				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" src="#{request.contextPath}/file"
+					<img class="livroNaVitrine-imagem" 
 						src="#{request.contextPath}/file/#{livro.capaPath}" 
 						alt="#{livro.titutlo}" title="#{livro.titulo}" />
 				</div>
 				<span class="livroNaVitrine-nome">#{livro.titutlo}</span>
 			</a>
 		</li>
-		
+		</ui:repeat>
 	</ul>
 </section>
 

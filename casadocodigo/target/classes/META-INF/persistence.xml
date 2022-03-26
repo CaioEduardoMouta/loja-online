@@ -8,15 +8,14 @@
         <description>Dev persistence unit</description>
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <!-- java transaction api || JNDI -->
-      
+        <jta-data-source>java:jboss/datasources/casadocodigoDS</jta-data-source>
+      	<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
-        	
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:8080/casadocodigo_javaee" />
-
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="1234" />
-        
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        	<property name="hibernate.cache.infinispan.expiration.lifespan"
+        		value="900000"/>
+        	<property name="hibermate.cache.infinispan.entity.expiration.max_idle" value="300000"/>	
+           	<property name="hibernate.cache.use_query_cache" value="true"/>
+        	<property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

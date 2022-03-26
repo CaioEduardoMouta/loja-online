@@ -3,7 +3,6 @@ package br.com.casadocodigo.loja.beans;
 import java.io.IOException;
 
 
-import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -31,7 +30,7 @@ public class AdminLivrosBean {
 	@Inject
 	private AutorDao autorDao;
 	
-	private Autor autor;
+	private Autor autor = new Autor();
 	
 	@Inject
 	private FacesContext context;

@@ -20,11 +20,14 @@ public class Autor {
 		
 	}
 	
-	public Autor(Integer id) {
-		this.id = id;
-		
-	}
 	
+	
+	public Autor(Integer id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public Integer getId() {
 		return id;
 	}
