@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
+import org.hibernate.SessionFactory;
 import org.hibernate.jpa.QueryHints;
 
 import br.com.casadocodigo.loja.models.Livro;
@@ -26,6 +27,17 @@ public class LivroDao {
 		manager.persist(livro);
 	
 	}
+	
+	public void limpaCache() {
+		Cache cache = manager.getEntityManagerFactory().getCache();
+		cache.evict(Livro.class, 1l);
+		cache.evictAll();
+		
+		SessionFactory factory = ((EntityManager) manager.getEntityManagerFactory())
+				.unwrap(SessionFactory.class);
+		factory.getCache().evictAllRegions();
+		factory.getCache().evictQueryRegion("home");
+	}
 
 	public List<Livro> listar() {
 		String jpql = "select distinct(l) from Livro l "
@@ -35,12 +47,12 @@ public class LivroDao {
 	}
 
 	public List<Livro> ultimosLancamentos() {
-		Cache cache = manager.getEntityManagerFactory().getCache();
-		cache.evict();
+	
 		String jpql = "select l from Livro l order by l.id desc";
 		return manager.createQuery(jpql, Livro.class)
 				.setMaxResults(5)
-				.setHint(QueryHints.HINT_CACHEABLE, true)	
+				.setHint(QueryHints.HINT_CACHEABLE, true)
+				.setHint(QueryHints.HINT_CACHE_REGION, "home")
 				.getResultList();
 	}
 
@@ -49,6 +61,7 @@ public class LivroDao {
 		return manager.createQuery(jpql, Livro.class)
 				.setFirstResult(6)
 				.setHint(QueryHints.HINT_CACHEABLE,true)
+				.setHint(QueryHints.HINT_CACHE_REGION, "home")
 				.getResultList();
 		
 	}

@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
 	
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -17,9 +18,9 @@
 	<script type="text/javascript" async="" src="resources/js/analytics.js"></script>
 	<script type="text/javascript" async="" src="resources/js/userreport.js"></script>
 	<script src="resources/js/eoo8tyd.js" async=""></script>
-	<script async="" src="resources/js/trekkie.storefront.min.js"></script>
-	<script async="" src="resources/js/shop_events_listener-002c206011fad5a2879a7a294d2ab2bc92451d9e2b5bbd0e634db3265e15665e.js"></script>
-    <script type="text/javascript" src="resources/js/ga_urchin_forms-0826cdefee6590321eb5c0c435eeebf7a8425a5493a9e95059c40e07e069ad52.js"></script>
+	<script async="" src="#{request.contextPath}/resources/js/trekkie.storefront.min.js"></script>
+	<script async="" src="#{request.contextPath}/resources/js/shop_events_listener-002c206011fad5a2879a7a294d2ab2bc92451d9e2b5bbd0e634db3265e15665e.js"></script>
+    <script type="text/javascript" src="#{request.contextPath}/resources/js/ga_urchin_forms-0826cdefee6590321eb5c0c435eeebf7a8425a5493a9e95059c40e07e069ad52.js"></script>
 
 
 	<!-- inject:css -->
@@ -184,14 +185,14 @@
 		</div>
 
 			<a tabindex="2" class="cabecalhoPrincipal-itemNavegacao cabecalhoPrincipal-mostraCategoriasEBusca" href="https://www.casadocodigo.com.br/#navegacaoCabecalho">
-				<img class="cabecalhoPrincipal-iconeItemNavegacao" src="resources/imagens/search.svg" alt="Abrir navegação por categorias e busca"></img>
+				<img class="cabecalhoPrincipal-iconeItemNavegacao" src="#{request.contextPath}/resources/imagens/search.svg" alt="Abrir navegação por categorias e busca"></img>
 			</a>
 
 			<a tabindex="-1" class="cabecalhoPrincipal-itemNavegacao cabecalhoPrincipal-escondeCategoriasEBusca" href="https://www.casadocodigo.com.br/#">
-				<img class="cabecalhoPrincipal-iconeItemNavegacao" src="resources/imagens/search.svg" alt="Ir para ao topo da página" />
+				<img class="cabecalhoPrincipal-iconeItemNavegacao" src="#{request.contextPath}/resources/imagens/search.svg" alt="Ir para ao topo da página" />
 			</a>
 
-			<a tabindex="3" href="https://www.casadocodigo.com.br/cart" title="Ir para sacola de compras" class="sacola cabecalhoPrincipal-itemNavegacao">
+			<a tabindex="3" href="carrinho.xhtml" title="Ir para sacola de compras" class="sacola cabecalhoPrincipal-itemNavegacao">
 				<svg width="28px" height="34px" viewBox="0 0 28 34" role="img" aria-labelledby="sacolaLabel" class="sacola-icone">
 					<title id="sacolaLabel">
 						Você tem 0 itens na sacola
@@ -209,47 +210,48 @@
 
 <main>
 		
+<o:cache scope="application">
+	<section class="vitrineDestaquinho container">
+		<h2 class="vitrineDestaquinho-titulo">Últimos lançamentos</h2>
+		<ul class="vitrineDestaquinho-lista">
+			<ui:repeat value="#{homeBean.ultimosLancamentos()}" var="livro">	
+				<li class="livroNaVitrine vitrineDestaquinho-produto">
+					<a href="#{request.contextPath}/livro-detalhe.xhtml?id=#{livro.id}" class="livroNaVitrine-link"
+							title="#{livro.titulo}">
+						<div class="livroNaVitrine-imagemContainer" role="presentation">
+							<img class="livroNaVitrine-imagem" 
+								src="#{request.contextPath}/file/#{livro.capaPath}" 
+									alt="#{livro.titulo}" title="#{livro.titulo}" />
+						</div>
+						<span class="livroNaVitrine-nome">#{livro.titulo}</span>
+					</a>
+				</li>
+			</ui:repeat>
+			
+		</ul>
+	</section>
+</o:cache>	
 	
-<section class="vitrineDestaquinho container">
-	<h2 class="vitrineDestaquinho-titulo">Últimos lançamentos</h2>
-	<ul class="vitrineDestaquinho-lista">
-		<ui:repeat var="livro" value="{homeBean.ultimosLancamentos()}">
-			<li class="livroNaVitrine vitrineDestaquinho-produto">
-				<a href="#{request.contextPath}/livro-detalhe.xhtml?id=#{livro.id}" class="livroNaVitrine-link"
+	<h3 class="homeCall container">Todos os nossos livros</h3>
+	
+	<section class="vitrineDaColecao container">
+		<ul class="vitrineDaColecao-lista">
+			<ui:repeat value="#{homeBean.demaisLivros()}" var="livro">
+				<li class="livroNaVitrine vitrineDaColecao-produto">
+					<a href="#{request.contextPath}/livro-detalhe.xhtml?id=#{livro.id}" class="livroNaVitrine-link" 
 						title="#{livro.titulo}">
-					<div class="livroNaVitrine-imagemContainer" role="presentation">
-						<img class="livroNaVitrine-imagem" 
-							src="resources/imagens/certificacao-java-featured_large.png" 
+						<div class="livroNaVitrine-imagemContainer" role="presentation">
+							<img class="livroNaVitrine-imagem" 
+								src="#{request.contextPath}/file/#{livro.capaPath}" 
 								alt="#{livro.titulo}" title="#{livro.titulo}" />
-					</div>
-					<span class="livroNaVitrine-nome">#{livro.titulo}</span>
-				</a>
-			</li>
-		</ui:repeat>
-	</ul>
-</section>
-
-
-<h3 class="homeCall container">Todos os nossos livros</h3>
-
-<section class="vitrineDaColecao container">
-	<ul class="vitrineDaColecao-lista">
-		<ui:repeat value="#{homeBean.demaisLivros()}" var="livro">
-		<li class="livroNaVitrine vitrineDaColecao-produto">
-			<a href="{request.contextpath}/livro-detalhe.xhtml?id={livro.id}" class="livroNaVitrine-link" 
-				title="#{livro.titutlo}">
-				<div class="livroNaVitrine-imagemContainer" role="presentation">
-					<img class="livroNaVitrine-imagem" 
-						src="#{request.contextPath}/file/#{livro.capaPath}" 
-						alt="#{livro.titutlo}" title="#{livro.titulo}" />
-				</div>
-				<span class="livroNaVitrine-nome">#{livro.titutlo}</span>
-			</a>
-		</li>
-		</ui:repeat>
-	</ul>
-</section>
-
+						</div>
+						<span class="livroNaVitrine-nome">#{livro.titulo}</span>
+					</a>
+				</li>
+			</ui:repeat>
+		</ul>
+	</section>
+</o:cache>
 
 		<div class="buscaDoRodape container" role="presentation">
 	<form role="search" aria-labelledby="rotuloBuscaDoRodape" action="https://www.casadocodigo.com.br/search" method="GET" class="buscaDoRodape-formulario">
@@ -274,7 +276,7 @@
 		<div class="rodape-conteudo" role="presentation">
 			<section class="rodape-secao">
 				<a class="rodape-logo" href="https://www.casadocodigo.com.br/#" title="Voltar ao topo da página">
-				<img src="resources/imagens/logo-footer.svg" alt="altLogoFooter" />
+				<img src="#{request.contextPath}/resources/imagens/logo-footer.svg" alt="altLogoFooter" />
 				</a>
 			</section>
 			<section class="rodape-secao rodape-secaoLinks">
@@ -388,22 +390,22 @@
 		<ul>
 			<li>
 				<a href="http://www.caelum.com.br/">
-					<img alt="Caelum" class="caelumGroup-footer-logo" src="resources/imagens/caelum-logo.svg" />
+					<img alt="Caelum" class="caelumGroup-footer-logo" src="#{request.contextPath}/resources/imagens/caelum-logo.svg" />
 				</a>
 			</li>
 			<li>
 				<a href="http://www.alura.com.br/">
-					<img alt="Alura" class="caelumGroup-footer-alura-logo" src="resources/imagens/alura-logo.svg" />
+					<img alt="Alura" class="caelumGroup-footer-alura-logo" src="#{request.contextPath}/resources/imagens/alura-logo.svg" />
 				</a>
 			</li>
 			<li>
 				<a href="http://www.casadocodigo.com.br/">
-					<img alt="Casa do Código" class="caelumGroup-footer-cdc-logo" src="resources/imagens/c-d-c-logo.svg" />
+					<img alt="Casa do Código" class="caelumGroup-footer-cdc-logo" src="#{request.contextPath}/resources/imagens/c-d-c-logo.svg" />
 				</a>
 			</li>
 			<li>
 				<a href="http://www.guj.com.br/">
-					<img alt="GUJ" class="caelumGroup-footer-guj-logo" src="resources/imagens/g-u-j-logo.svg" />
+					<img alt="GUJ" class="caelumGroup-footer-guj-logo" src="#{request.contextPath}/resources/imagens/g-u-j-logo.svg" />
 				</a>
 			</li>
 		</ul>
@@ -415,7 +417,7 @@
 <iframe src="resources/ut.html" style="display: none;"></iframe>
 <div style="position: absolute; bottom: 0px; right: 0px; width: 1px; height: 1px; overflow: hidden; visibility: visible;"></div>
 <div style="width: auto; height: auto; position: fixed; z-index: 100000004; display: block; visibility: visible; overflow-x: hidden; bottom: 22%; left: 0px;">
-	<iframe id="crowd-shortcut" name="crowd-shortcut" frameborder="0" scrolling="no" class="urp-no-hide" src="resources/saved_resource.html" style="max-width: none !important; width: 187px; display: block; height: 44px; margin-left: -143px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; visibility: visible;"></iframe>
+	<iframe id="crowd-shortcut" name="crowd-shortcut" frameborder="0" scrolling="no" class="urp-no-hide" src="#{request.contextPath}/resources/saved_resource.html" style="max-width: none !important; width: 187px; display: block; height: 44px; margin-left: -143px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; visibility: visible;"></iframe>
 </div>
 
 </body>
